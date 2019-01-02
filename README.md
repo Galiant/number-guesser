@@ -5,5 +5,5 @@ Simple number guesser project. Guess a number between 1 and 10.
 
 - HTML
 - CSS
-- Bootstrap
+- Skeleton
 - JavaScript
