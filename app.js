@@ -1,7 +1,7 @@
 // Game values
 let min = 1,
   max = 10,
-  winningNum = 2,
+  winningNum = getRandomNum(min, max),
   guessesLeft = 3;
 
 // UI Elements
@@ -19,6 +19,13 @@ maxNum.textContent = max;
 // Listen for guess
 guessBtn.addEventListener('click', function () {
   let guess = parseInt(guessInput.value);
+
+  // Play again event listener
+  game.addEventListener('mousedown', function (e) {
+    if (e.target.className === 'play-again') {
+      window.location.reload();
+    }
+  });
 
   // Validate
   if (isNaN(guess) || guess < min || guess > max) {
@@ -63,6 +70,15 @@ function gameOver(won, msg) {
   message.style.color = color;
   // Set message
   setMessage(msg);
+
+  // Play again
+  guessBtn.value = 'Play Again';
+  guessBtn.className += 'play-again';
+}
+
+// Get winning number
+function getRandomNum() {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 // Set message
